@@ -1,0 +1,30 @@
+
+<ion-content>
+  <div class="title">
+    <h1>Login</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do </p>
+  </div>
+  <div class="container">
+       
+          <!-- Votre formulaire ici -->
+          
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <ion-item style="background-color: aliceblue;">
+              <ion-label position="floating">Nom</ion-label>
+              <ion-input formControlName="nom" required></ion-input>
+            </ion-item>
+            <br>
+            <ion-item>
+              <ion-label position="floating">Mot de passe</ion-label>
+              <ion-input type="password" formControlName="mdp" required></ion-input>
+            </ion-item>
+            <div *ngIf="loginForm.errors?.incorrect">
+              <ion-text color="danger">Nom ou mot de passe incorrect.</ion-text>
+            </div><br>
+            <ion-button expand="full" type="submit">Se connecter</ion-button>
+          </form>
+      </div>
+    
+      
+
+</ion-content>

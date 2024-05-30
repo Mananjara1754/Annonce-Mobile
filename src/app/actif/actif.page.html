@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Annonces actifs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="sponsor">
+    <ng-container *ngFor="let annonceSponsor of annonce">
+      <div class="annonce">
+        <!-- ... -->
+        <div class="card-img" style="background-image: url({{annonceSponsor.data.image[0]}});">
+          <div class="card-categ">{{ 
+            annonceSponsor.data.categorie === "1" ? 'Auto moto' : 
+            (annonceSponsor.data.categorie === "2" ? 'Immobilier' : 
+            (annonceSponsor.data.categorie === "3" ? 'High Tech' :
+            (annonceSponsor.data.categorie === "4" ? 'Electroménager' :
+            (annonceSponsor.data.categorie === "5" ? 'Plein air et sports' :
+            (annonceSponsor.data.categorie === "6" ? 'Mobilier' :
+            (annonceSponsor.data.categorie === "7" ? 'Divers' : ''))))))
+          }}</div>
+        </div>
+        <div class="card-info">
+          <p id="card-titre">{{annonceSponsor.data.annonceTitre}}</p>
+          <p>Publier le 21-2-2</p>
+        </div>
+        <div class="row" id="card-footer">
+          <div class="col-6">
+            <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="desapprouverAnnonce(annonceSponsor)">Desapprouver</button>
+              <button mat-menu-item>Rejeter</button>
+            </mat-menu>
+          </div>
+          <div class="col-6">
+            <a [routerLink]="['/detail', annonceSponsor.key]">Voir l'annonce</a>
+          </div>
+        </div>
+        <!-- ... -->
+      </div>
+    </ng-container>
+</div>
+</ion-content>

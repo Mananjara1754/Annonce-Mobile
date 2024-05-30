@@ -1,0 +1,642 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start" class="menu" [routerLink]="['/accueil']">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-buttons>
+    <div class="en-Tete">
+      <p>Etape 1 </p>
+    </div>
+    <ion-buttons slot="end" class="menu">
+      <ion-icon name="search"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <p class="titre">Choisissez votre offre</p>
+  <!-- ..form. -->
+  <form action="" #form="ngForm">
+    <div class="choix" >
+      <mat-radio-group aria-label="Select an option" name="1"  [(ngModel)]="selectedOption" *ngFor="let pricingArray of pricing">
+    <mat-radio-button color="primary" [value]="pricingArray.data.idPricing" (change)="selectedPricingPrice = pricingArray.data.prix;">
+      {{ pricingArray.data.nomPricing }}
+    </mat-radio-button>
+  </mat-radio-group>
+  <p style="color: black;">Budget Total: {{ selectedPricingPrice }} Ar</p>
+</div>
+<p class="titre">Détails de l'annonce</p>
+<div class="detail">
+<p><input type="text" class="form-control" placeholder="Titre de l'annonce" name="2"  [(ngModel)]="annonceTitre"></p>
+<p>
+  <label class="form-label" class="titleSelect">Catégorie</label>
+  <select id="" class="form-select" name="x4"  [(ngModel)]="selectCategorie">
+<ng-container *ngFor="let categorieArray of categorie">
+  <option  [value]="categorieArray.data.idCategorie">{{categorieArray.data.nomCategorie}}</option>
+</ng-container>
+</select></p>
+<p>
+  <label class="form-label" class="titleSelect">Sous catégorie</label>
+  <select id="" class="form-select" name="x5"  [(ngModel)]="selectSousCategorie">
+<ng-container *ngFor="let sousCategorieArray of sousCategorie">
+  <option *ngIf="sousCategorieArray.data.idCategorie == selectCategorie" 
+          [value]="sousCategorieArray.data.idSousCategorie">
+    {{sousCategorieArray.data.nomSousCategorie}}
+  </option>
+</ng-container>
+</select></p>
+<p style="color: black;"> {{selectCategorie}} {{selectSousCategorie}}</p>
+<div *ngIf="selectedOption == 50 || selectedOption == 100">
+  <p>
+    <mat-radio-group aria-label="Select an option" name="x6"  [(ngModel)]="venteLocation">
+      <mat-radio-button color=primary value="1">Vente</mat-radio-button>
+      <mat-radio-button color=primary value="2">Location</mat-radio-button>
+    </mat-radio-group>
+  </p>
+  <!-- ...................................................... -->
+        <div *ngIf="selectCategorie == 1 && selectSousCategorie == 1" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="x7"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="x8"  [(ngModel)]="modele"></p>
+          <p ><input type="text" class="form-control" placeholder="Année" name="x9"  [(ngModel)]="annee"></p>
+    
+          <p >
+            <select class="form-select" placeholder="Bôîte de vitesses" name="x10"  [(ngModel)]="boiteVitesse">
+              <option value="Bôite de vitesses manuelle">Bôite de vitesses manuelle</option>
+              <option value="Bôite de vitesses automatique">Bôite de vitesses automatique</option>
+              <option value="Bôite de vitesses semi-automatique">Bôite de vitesses semi-automatique</option>
+              <option value="Bôite de vitesses à variable continue (CTV)">Bôite de vitesses à variable continue (CTV)</option>
+              <option value="Bôite de vitesses séquentielle">Bôite de vitesses séquentielle</option>
+            </select>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"  placeholder="Nombre de vitesses" name="x11"  [(ngModel)]="nbVitesse">
+            <span class="input-group-text" id="basic-addon2">vitesses</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"  placeholder="Cylindrée" name="x12"  [(ngModel)]="cylindre">
+            <span class="input-group-text" id="basic-addon2">cm³/tr</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"  placeholder="Kilométrage" name="x13"  [(ngModel)]="kilometrage">
+            <span class="input-group-text" id="basic-addon2">km</span>
+          </div>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="x14"  [(ngModel)]="etatGeneral"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Nombre de place" name="x15"  [(ngModel)]="nbPlace">
+            <span class="input-group-text" id="basic-addon2">places</span>
+          </div>
+          <p> 
+            <label class="form-label" class="titleSelect">Carburant</label>
+            <select class="form-select" placeholder="Carburant" name="x16"  [(ngModel)]="carburant">
+              <option value="Essence">Essence</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Electrique">Electrique</option>
+              <option value="Hybride">Hybride</option>
+            </select> 
+          </p>
+        </div>
+        <div *ngIf="selectCategorie == 1 && selectSousCategorie == 2" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="x17"  [(ngModel)]="marque"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Cylindrée" name="x18"  [(ngModel)]="cylindre">
+            <span class="input-group-text" id="basic-addon2">cm³/tr</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"  placeholder="Kilométrage" name="x19"  [(ngModel)]="kilometrage">
+            <span class="input-group-text" id="basic-addon2">km</span>
+          </div>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="x20"  [(ngModel)]="etatGeneral"></p>
+        </div>
+        <div *ngIf="selectCategorie == 1 && selectSousCategorie == 3" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="x21"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="x22"  [(ngModel)]="modele"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="x23"  [(ngModel)]="etatGeneral"></p>
+          <p ><input type="text" class="form-control" placeholder="Compatibilite" name="x24"  [(ngModel)]="compatibilite"></p>
+        </div>
+        <div *ngIf="selectCategorie == 1 && selectSousCategorie == 4" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="x25"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="x26"  [(ngModel)]="modele"></p>
+          <p ><input type="text" class="form-control" placeholder="Materiau du cadre" name="x27"  [(ngModel)]="materiauCadre"></p>
+          <p> 
+            <label class="form-label" class="titleSelect">Type de vélo</label>
+            <select class="form-select" placeholder="Type de vélo" name="x28"  [(ngModel)]="type">
+            <option value="Vélo de route">Vélo de route</option>
+            <option value="VTT (Vélo Tout-Terrain)">VTT (Vélo Tout-Terrain)</option>
+            <option value="Vélo de ville">Vélo de ville</option>
+            <option value="Vélo électrique (e-bike)">Vélo électrique (e-bike)</option>
+            <option value="Vélo pliant">Vélo pliant</option>
+            <option value="Vélo de BMX">Vélo de BMX</option>
+          </select></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"  placeholder="Nombre de vitesses" name="x29"  [(ngModel)]="nbVitesse">
+            <span class="input-group-text" id="basic-addon2">vitesses</span>
+          </div>
+          
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="x30"  [(ngModel)]="etatGeneral"></p>
+        </div>
+        <!-- ...// -->
+        <div *ngIf="selectCategorie == 2 && selectSousCategorie == 1" >
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Superficie en m²" name="x31"  [(ngModel)]="superficieTerrain">
+            <span class="input-group-text" id="basic-addon2">m²</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Nombre de pièces" name="x32"  [(ngModel)]="nbPiece">
+            <span class="input-group-text" id="basic-addon2">pièces</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Nombre de salles de bains" name="x33"  [(ngModel)]="nbBain">
+            <span class="input-group-text" id="basic-addon2">salle de bain</span>
+          </div>
+          <p ><input type="text" class="form-control" placeholder="Equipements et aménagements" name="x457"  [(ngModel)]="equipementAmenagement"></p>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="hfksdj" [(ngModel)]="stationnement" >
+            <label class="form-check-label" for="flexSwitchCheckChecked" style="color: black;">Stationnement ou parking</label>
+          </div> 
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="2lolo" [(ngModel)]="electricite">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Electricité (JIRAMA)</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="2lplo" [(ngModel)]="eau" >
+            <label class="form-check-label" for="flexSwitchCheckChecked">Eau (JIRAMA)</label>
+          </div>   
+          <p ><input type="text" class="form-control" placeholder="Proximité" name="xsdf"  [(ngModel)]="proximite"></p>
+        </div>
+        <div *ngIf="selectCategorie == 2 && selectSousCategorie == 2" >
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Superficie du terrain en m²" name="gfx"  [(ngModel)]="superficieTerrain">
+            <span class="input-group-text" id="basic-addon2">m²</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Superficie habitable en m²" name="xgf"  [(ngModel)]="superficieHabitable">
+            <span class="input-group-text" id="basic-addon2">m²</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Nombre de pièces" name="gfdx"  [(ngModel)]="nbPiece">
+            <span class="input-group-text" id="basic-addon2">pièces</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Nombre d'étages" name="xddv"  [(ngModel)]="nbEtage">
+            <span class="input-group-text" id="basic-addon2">étages</span>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="popo78po" [(ngModel)]="jardin" >
+            <label class="form-check-label" for="flexSwitchCheckChecked">Jardin ou espace exterieur</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="popo87po" [(ngModel)]="mur" >
+            <label class="form-check-label" for="flexSwitchCheckChecked">Clôturé</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="2lol353o" [(ngModel)]="electricite">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Electricité (JIRAMA)</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"name="2lpdl534o" [(ngModel)]="eau" >
+            <label class="form-check-label" for="flexSwitchCheckChecked">Eau (JIRAMA)</label>
+          </div>   
+          <p ><input type="text" class="form-control" placeholder="Garage ou parking" name="xsr"  [(ngModel)]="garageParking"></p>
+          <p ><input type="text" class="form-control" placeholder="Equipements et aménagements" name="xrg"  [(ngModel)]="equipementAmenagement"></p>
+          <p ><input type="text" class="form-control" placeholder="Proximité" name="xhd"  [(ngModel)]="proximite"></p>
+          <p ><input type="text" class="form-control" placeholder="Autres caractéristiques" name="rdhrx"  [(ngModel)]="autre"></p>
+        </div>
+        <div *ngIf="selectCategorie == 2 && selectSousCategorie == 3" >
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Superficie du terrain en m²" name="re32hx"  [(ngModel)]="superficieTerrain">
+            <span class="input-group-text" id="basic-addon2">m²</span>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="lmlml" [(ngModel)]="mur" >
+            <label class="form-check-label" for="flexSwitchCheckChecked">Clôturé</label>
+          </div> 
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="lmlml638" [(ngModel)]="titreBorne">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Titré</label>
+          </div> 
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="opolml638" [(ngModel)]="borneTitre">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Borné</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="opoxxml638" [(ngModel)]="accesVoiture">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Accessibilite voiture</label>
+          </div>  
+        </div>
+        <div *ngIf="selectCategorie == 2 && selectSousCategorie == 4" >
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Superficie du terrain en m²" name="rsasahx"  [(ngModel)]="superficieTerrain">
+            <span class="input-group-text" id="basic-addon2">m²</span>
+          </div>
+          <p ><input type="text" class="form-control" placeholder="Equipements et aménagements" name="453x"  [(ngModel)]="equipementAmenagement"></p>
+          <p ><input type="text" class="form-control" placeholder="Aménagements speciaux" name="erwx"  [(ngModel)]="amenagementSpeciau"></p>
+          <p ><input type="text" class="form-control" placeholder="Services" name="xgf"  [(ngModel)]="service"></p>
+        </div>
+        <!-- ...// -->
+        <div *ngIf="selectCategorie == 3 && (selectSousCategorie == 1 || selectSousCategorie == 2)" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xfgd"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="xjytk"  [(ngModel)]="modele"></p>
+          <p >
+            <label class="form-label" class="titleSelect">Système d'exploitation</label>
+            <select class="form-select" placeholder="Système d'exploitation" name="xerta"  [(ngModel)]="os">
+            <option value="Android">Android</option>
+            <option value="iOS">iOS</option>
+            <option value="Windows Phone">Windows Phone</option>
+            <option value="BlackBerry OS">BlackBerry OS</option>
+            <option value="KaiOS">KaiOS</option>
+            <option value="Tizen">Tizen</option>
+            <option value="Ubuntu Touch">Ubuntu Touch</option>
+          </select></p>
+          <p ><input type="number" class="form-control" placeholder="Taille et resolution de l'ecran" name="xj652rs"  [(ngModel)]="tailleEcran"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Capacités de stockage" name="xerga"  [(ngModel)]="stockage">
+            <span class="input-group-text" id="basic-addon2">GO</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Mémoire RAM" name="x6fs"  [(ngModel)]="ram" >
+            <span class="input-group-text" id="basic-addon2">GO</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Appareil photo" name="xfsd0o"  [(ngModel)]="photo">
+            <span class="input-group-text" id="basic-addon2">Mp</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Batterie" name="xkllh"  [(ngModel)]="batterie">
+            <span class="input-group-text" id="basic-addon2">mAh</span>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="azxsoa" [(ngModel)]="bluetooth">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Bluetooth</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="azxsocxa" [(ngModel)]="wifi">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Wifi</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="azxsoa" [(ngModel)]="nfc">
+            <label class="form-check-label" for="flexSwitchCheckChecked">NFC</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="azxsoa" [(ngModel)]="gps">
+            <label class="form-check-label" for="flexSwitchCheckChecked">GPS</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="azxsoa21" [(ngModel)]="empreinte">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Empreinte digital</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="a63zxsoa" [(ngModel)]="faciale">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Reconnaissance facial</label>
+          </div>
+        </div>
+        <div *ngIf="selectCategorie == 3 && selectSousCategorie == 3" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="uudtx"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="xthrs"  [(ngModel)]="modele"></p>
+          <p ><input type="text" class="form-control" placeholder="Processeur" name="xhth"  [(ngModel)]="processeur"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Capacités de stockage" name="xscscs"  [(ngModel)]="stockage">
+            <span class="input-group-text" id="basic-addon2">GO</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"  placeholder="Mémoire RAM" name="xsaxs"  [(ngModel)]="ram" >
+            <span class="input-group-text" id="basic-addon2">GO</span>
+          </div>
+          <p ><input type="text" class="form-control"></p>
+          <p ><input type="text" class="form-control" placeholder="Carte graphique" name="xrgr"  [(ngModel)]="graph"></p>
+          <p>
+            <label class="form-label" class="titleSelect">Système d'exploitation</label>
+            <select class="form-select" placeholder="Système d'exploitation" name="xrh96eat"  [(ngModel)]="os">
+            <option value="Android">Android</option>
+            <option value="iOS">iOS</option>
+            <option value="Windows Phone">Windows Phone</option>
+            <option value="BlackBerry OS">BlackBerry OS</option>
+            <option value="KaiOS">KaiOS</option>
+            <option value="Tizen">Tizen</option>
+            <option value="Ubuntu Touch">Ubuntu Touch</option>
+          </select></p>
+          <p ><input type="text" class="form-control" placeholder="Ports et extensions" name="tha5x"  [(ngModel)]="port"></p>
+        </div>
+        <div *ngIf="selectCategorie == 3 && selectSousCategorie == 4" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="esuusx"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="xurr"  [(ngModel)]="modele"></p>
+          <p ><input type="number" class="form-control" placeholder="Taille et résolution de l'écran" name="xjrs"  [(ngModel)]="tailleEcran"></p>
+          <p >
+            <label class="form-label" class="titleSelect">Résolution</label>
+            <select  class="form-control" placeholder="Résolution" name="xyw"  [(ngModel)]="resolution">
+              <option value="HD (720p)">HD (720p)</option>
+              <option value="Full HD (1080p)">Full HD (1080p)</option>
+              <option value="4K UHD (2160p)">4K UHD (2160p)</option>
+              <option value="8K UHD (4320p)">8K UHD (4320p)</option>
+          </select></p>
+          <p ><input type="text" class="form-control" placeholder="Technologie d'affichage" name="xitjf"  [(ngModel)]="affichage"></p>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="lplplp32"  [(ngModel)]="hdmi">
+            <label class="form-check-label" for="flexSwitchCheckChecked">HDMI</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="lplplp3a2"  [(ngModel)]="bluetooth">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Bluetooth</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="lplplp3232"  [(ngModel)]="wifi">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Wifi</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="lplaqplp32"  [(ngModel)]="usb">
+            <label class="form-check-label" for="flexSwitchCheckChecked">USB</label>
+          </div>
+          <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="00lplplp32"  [(ngModel)]="smartTv">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Fonctionnalites Smart TV</label>
+          </div>
+        </div>
+        <div *ngIf="selectCategorie == 3 && selectSousCategorie == 5" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xh93st"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="x10stj"  [(ngModel)]="modele"></p>
+          <p ><input type="text" class="form-control" placeholder="Resolution de l'image" name="xpopazao"  [(ngModel)]="resolution"></p>
+          <p ><input type="text" class="form-control" placeholder="Taille du capteur" name="vvass37vx"  [(ngModel)]="tailleCapteur"></p>
+          <p ><input type="text" class="form-control" placeholder="Stabilisation de l'image" name="xgsopk7ss"  [(ngModel)]="stabilisationImage"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Vitesse d'obturation maximale" name="xr63111hr"  [(ngModel)]="vitesseObturation">
+            <span class="input-group-text" id="basic-addon2">seconds</span>
+          </div>
+        </div>
+        <div *ngIf="selectCategorie == 3 && selectSousCategorie == 6" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xqww"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Modèle" name="xqw"  [(ngModel)]="modele"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Performance graphique" name="xrfguw"  [(ngModel)]="perfGraph">
+            <span class="input-group-text" id="basic-addon2">seconds</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Capacité de stockage" name="xg3222g"  [(ngModel)]="stockage">
+            <span class="input-group-text" id="basic-addon2">GO</span>
+          </div>
+        </div>
+        <!-- ...// -->
+        <div *ngIf="selectCategorie == 4 && selectSousCategorie == 1" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xopop"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xygf"  [(ngModel)]="etatGeneral"></p>
+          <p ><input type="text" class="form-control" placeholder="Capacité" name="xryhs"  [(ngModel)]="capacite"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"class="form-control" placeholder="Vitesse d'essorage" name="xyset"  [(ngModel)]="vitesseEssorage">
+            <span class="input-group-text" id="basic-addon2">tr/min</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Niveau sonore" name="xhf99hz"  [(ngModel)]="sonore">
+            <span class="input-group-text" id="basic-addon2">dB</span>
+          </div>
+        </div>
+        <div *ngIf="selectCategorie == 4 && selectSousCategorie == 2" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xzteh"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xhezgr"  [(ngModel)]="etatGeneral"></p>
+          <p ><input type="text" class="form-control" placeholder="Vitesse" name="grx"  [(ngModel)]="vitesse"></p>
+          <p ><input type="text" class="form-control" placeholder="Capacité" name="xyary"  [(ngModel)]="capacite"></p>
+        </div>
+        <div *ngIf="selectCategorie == 4 && selectSousCategorie == 3" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xyfsfray"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xyfsfar"  [(ngModel)]="etatGeneral"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Niveau sonore" name="xhgh39arr"  [(ngModel)]="sonore">
+            <span class="input-group-text" id="basic-addon2">dB</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Nombre de portes" name="xhghr41f"  [(ngModel)]="nbPorte">
+            <span class="input-group-text" id="basic-addon2">portes</span>
+          </div>
+        </div>
+        <div *ngIf="selectCategorie == 4 && selectSousCategorie == 4" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xdrg"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xrg"  [(ngModel)]="etatGeneral"></p>
+          <p ><input type="text" class="form-control" placeholder="Type" name="xrgqq"  [(ngModel)]="type"></p>
+        </div>
+        <div *ngIf="selectCategorie == 4 && selectSousCategorie == 5" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xfhhszt"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xtrhh"  [(ngModel)]="etatGeneral"></p>
+          <p ><input type="text" class="form-control" placeholder="Puissance d'aspiration" name="xgrv"  [(ngModel)]="aspiration"></p>
+          <p ><input type="text" class="form-control" placeholder="Capacité du reservoir" name="szx"  [(ngModel)]="reservoir"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control"  placeholder="Niveau sonore" name="2535x"  [(ngModel)]="sonore">
+            <span class="input-group-text" id="basic-addon2">dB</span>
+          </div>
+        </div>
+        <div *ngIf="selectCategorie == 4 && selectSousCategorie == 6" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="x38"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="x78"  [(ngModel)]="etatGeneral"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Puissance" name="78321x"  [(ngModel)]="puissance">
+            <span class="input-group-text" id="basic-addon2">W</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Capacité" name="x87"  [(ngModel)]="capacite">
+            <span class="input-group-text" id="basic-addon2">L</span>
+          </div>
+        </div>
+        <div *ngIf="selectCategorie == 4 && selectSousCategorie == 7" >
+          <p ><input type="text" class="form-control" placeholder="Marque" name="x79637"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="x6786"  [(ngModel)]="etatGeneral"></p>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Puissance de refroidissement" name="x868"  [(ngModel)]="refroidissement">
+            <span class="input-group-text" id="basic-addon2">W</span>
+          </div>
+          <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Niveau sonore" name="x8667"  [(ngModel)]="sonore">
+            <span class="input-group-text" id="basic-addon2">dB</span>
+          </div>
+        </div>
+        <!-- ...// -->
+        <div *ngIf="selectCategorie == 5">
+          <p ><input type="text" class="form-control" placeholder="Marque" name="x676"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="trtx"  [(ngModel)]="etatGeneral"></p>
+        </div>
+        <!-- ...// -->
+        <div *ngIf="selectCategorie == 6 && (selectSousCategorie == 1 || selectSousCategorie == 2)">
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xrte"  [(ngModel)]="etatGeneral"></p>
+          
+          <p><label class="form-label" class="titleSelect">Matériau</label>
+            <select  class="form-control" placeholder="Matériau" name="xtrg7"  [(ngModel)]="materiau">
+                <option value="Tissu">Tissu</option>
+                <option value="Cuir">Cuir</option>
+                <option value="Simili Cuir">Simili Cuir</option>
+                <option value="Velours">Velours</option>
+                <option value="Microfibre">Microfibre</option>
+                <option value="Lin">Lin</option>
+          </select>
+           </p>
+          <p >
+            <label class="form-label" class="titleSelect">Type</label>
+            <select class="form-select" placeholder="Type" name="xdh5"  [(ngModel)]="type" *ngIf="selectSousCategorie == 1" >
+              <option value="Canapé droit">Canapé droit</option>
+              <option value="Canapé d'angle">Canapé d'angle</option>
+              <option value="Canapé convertible">Canapé convertible</option>
+              <option value="Canapé fixe">Canapé fixe</option>
+              <option value="Canapé modulaire">Canapé modulaire</option>
+              <option value="Canapé-lit">Canapé-lit</option>
+              <option value="Canapé panoramique">Canapé panoramique</option>
+              <option value="Canapé méridienne">Canapé méridienne</option>
+              <option value="Banquette">Banquette</option>
+              <option value="Canapé relax">Canapé relax</option>
+            </select>
+            ></p>
+          <p ><input type="text" class="form-control" placeholder="Dimensions"name="xdgf8"  [(ngModel)]="dimension"></p>
+          <p ><input type="text" class="form-control" placeholder="Couleur" name="h5x"  [(ngModel)]="couleur"></p>
+        </div>
+        <div *ngIf="selectCategorie == 6 && (selectSousCategorie != 1 || selectSousCategorie != 2)">
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xfsd7"  [(ngModel)]="etatGeneral"></p>
+          <p ><input type="text" class="form-control" placeholder="Materiau" name="gsd3x"  [(ngModel)]="materiau"></p>
+          <!-- <select  class="form-control" placeholder="Materiau" name="gsd3x"  [(ngModel)]="materiau">
+            <option value="Bois">Bois</option>
+            <option value="Verre">Verre</option>
+            <option value="Métal">Métal</option>
+            <option value="Marbre ou pierre">Marbre ou pierre</option>
+            <option value="Acrylique ou plastique">Acrylique ou plastique</option>
+            <option value="Résine">Résine</option>
+            <option value="Rotin ou osier">Rotin ou osier</option>
+            <option value="Plexiglas">Plexiglas</option>
+            <option value="Composite">Composite</option>
+          </select><input type="text"> -->
+          <p ><input type="text" class="form-control" placeholder="Dimensions" name="xefa8"  [(ngModel)]="dimension"></p>
+        </div>
+        <!-- ...// -->
+        <div *ngIf="selectCategorie == 7 && selectSousCategorie != 5">
+          <p ><input type="text" class="form-control" placeholder="Marque" name="xsfd6"  [(ngModel)]="marque"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xsdv4"  [(ngModel)]="etatGeneral"></p>
+        </div>
+        <div *ngIf="selectCategorie == 7 && selectSousCategorie == 5">
+          <p ><input type="text" class="form-control" placeholder="Titre" name="xse7"  [(ngModel)]="titre"></p>
+          <p ><input type="text" class="form-control" placeholder="Etat général" name="xsg4"  [(ngModel)]="etatGeneral"></p>
+        </div>
+      </div>
+        <!-- .... -->
+<!-- ...................................................... -->
+
+  <textarea class="form-control" aria-label="With textarea" placeholder="Description" name="sdeg6x"  [(ngModel)]="description"></textarea><br>
+
+  <p><label class="form-label" class="titleSelect">Province *</label>
+    <select id="" class="form-select" name="eg3x"  [(ngModel)]="province">
+    <option value="Antananarivo" class="form-control">Antananarivo</option>
+    <option value="Antsiranana">Antsiranana</option>
+    <option value="Mahajanga">Mahajanga</option>
+    <option value="Toamasina">Toamasina</option>
+    <option value="Fianarantsoa">Fianarantsoa</option>
+    <option value="Toliara">Toliara</option>
+  </select></p>
+  <p><input type="text" class="form-control" placeholder="Ville" name="xweg1"  [(ngModel)]="ville"></p>
+  <p><input type="number" class="form-control" placeholder="Prix en Ariary" name="xwegeg9"  [(ngModel)]="prix"></p>
+</div>
+<p class="titre">Information sur le vendeur</p>
+<div class="vendeur">
+<p><input type="text" class="form-control" placeholder="Téléphone" name="ewge76"  [(ngModel)]="telephone" [class.filled]="email"></p>
+<p><input type="text" class="form-control" placeholder="Adresse email" name="xreh7"  [(ngModel)]="email" [class.filled]="email"></p>
+<label class="form-label" class="titleSelect">Vous êtes *</label>
+<p><select id="" class="form-select" name="sg0x"  [(ngModel)]="typeVendeur">
+    <option value="Particulier">Particulier</option>
+    <option value="Agence / Entreprise" >Agence / Entreprise</option>
+</select></p>
+<!-- ... -->
+<p style="color: black;font-weight: 600;">Disponibilite</p>
+<div class="row" style="justify-content: space-around;">
+  <label class="form-label" class="titleSelect">Jour</label>
+<div class="col-5">
+  <p><select id="" class="form-select" name="xdsg3"  [(ngModel)]="jourDebut">
+    <option value="Lundi" class="form-control">Lundi</option>
+    <option value="Mardi" class="form-control">Mardi</option>
+    <option value="Mercredi" class="form-control">Mercredi</option>
+    <option value="Jeudi" class="form-control">Jeudi</option>
+    <option value="Vendredi" class="form-control">Vendredi</option>
+    <option value="Samedi" class="form-control">Samedi</option>
+    <option value="Dimanche" class="form-control">Dimanche</option>
+  </select></p>
+</div>
+<div class="col-2" style="text-align: center;">
+  <p style="color: black;margin-top: 7px">a</p>
+</div>
+<div class="col-5">
+  <p><select id="" class="form-select" name="edw2"  [(ngModel)]="jourFin">
+    <option value="Lundi" class="form-control">Lundi</option>
+    <option value="Mardi" class="form-control">Mardi</option>
+    <option value="Mercredi" class="form-control">Mercredi</option>
+    <option value="Jeudi" class="form-control">Jeudi</option>
+    <option value="Vendredi" class="form-control">Vendredi</option>
+    <option value="Samedi" class="form-control">Samedi</option>
+    <option value="Dimanche" class="form-control">Dimanche</option>
+  </select></p>
+</div>
+</div>
+<!-- .. -->
+<div class="row" style="justify-content: space-around;">
+  <label class="form-label" class="titleSelect">Heure</label>
+      <div class="col-5">
+        <p><select id="" class="form-select" name="xwexzg3"  [(ngModel)]="heureDebut">
+          <option value="1h" class="form-control">1h</option>
+          <option value="2h" class="form-control">2h</option>
+          <option value="3h" class="form-control">3h</option>
+          <option value="4h" class="form-control">4h</option>
+          <option value="5h" class="form-control">5h</option>
+          <option value="6h" class="form-control">6h</option>
+          <option value="7h" class="form-control">7h</option>
+          <option value="8h" class="form-control">8h</option>
+          <option value="9h" class="form-control">9h</option>
+          <option value="10h" class="form-control">10h</option>
+          <option value="11h" class="form-control">11h</option>
+          <option value="12h" class="form-control">12h</option>
+          <option value="13h" class="form-control">13h</option>
+          <option value="14h" class="form-control">14h</option>
+          <option value="15h" class="form-control">15h</option>
+          <option value="16h" class="form-control">16h</option>
+          <option value="17h" class="form-control">17h</option>
+          <option value="18h" class="form-control">18h</option>
+          <option value="19h" class="form-control">19h</option>
+          <option value="20h" class="form-control">20h</option>
+          <option value="21h" class="form-control">21h</option>
+          <option value="22h" class="form-control">22h</option>
+          <option value="23h" class="form-control">23h</option>
+        </select></p>
+      </div>
+      <div class="col-2" style="text-align: center;">
+        <p style="color: black;margin-top: 7px">a</p>
+      </div>
+      <div class="col-5">
+        <p><select id="" class="form-select" name="egwxx"  [(ngModel)]="heureFin">
+          <option value="1h" class="form-control">1h</option>
+          <option value="2h" class="form-control">2h</option>
+          <option value="3h" class="form-control">3h</option>
+          <option value="4h" class="form-control">4h</option>
+          <option value="5h" class="form-control">5h</option>
+          <option value="6h" class="form-control">6h</option>
+          <option value="7h" class="form-control">7h</option>
+          <option value="8h" class="form-control">8h</option>
+          <option value="9h" class="form-control">9h</option>
+          <option value="10h" class="form-control">10h</option>
+          <option value="11h" class="form-control">11h</option>
+          <option value="12h" class="form-control">12h</option>
+          <option value="13h" class="form-control">13h</option>
+          <option value="14h" class="form-control">14h</option>
+          <option value="15h" class="form-control">15h</option>
+          <option value="16h" class="form-control">16h</option>
+          <option value="17h" class="form-control">17h</option>
+          <option value="18h" class="form-control">18h</option>
+          <option value="19h" class="form-control">19h</option>
+          <option value="20h" class="form-control">20h</option>
+          <option value="21h" class="form-control">21h</option>
+          <option value="22h" class="form-control">22h</option>
+          <option value="23h" class="form-control">23h</option>
+        </select></p>
+      </div>
+</div>
+</div>
+  </form>
+  <p class="titre">Photo</p>
+  <p class="alert">{{ 
+    selectedOption == 0 ? '1 photo a selectionné' : 
+    (selectedOption == 50 ? '4 photo a selectionné' : 
+    (selectedOption == 100 ? '4 photo a selectionné' : ''))
+  }} *</p>
+<input type="file" (change)="onFileSelected($event)" class="form-control" multiple> <button (click)="uploadFile()" class="btn btn-primary" [disabled]="!(verif)">Telecharger</button>
+<br>
+</ion-content>
+<ion-footer [translucent]="true">
+  <ion-toolbar>
+
+    <ion-title><button ion-button [disabled]="!(typeVendeur && telephone && email && verif)" color="success" class="w-50 btn btn-primary" (click)="onSubmit()">Suivant</button></ion-title>
+      <!-- <button ion-button [disabled]="!(telephone && email)" color="success">Submit</button> -->
+  </ion-toolbar>
+</ion-footer>

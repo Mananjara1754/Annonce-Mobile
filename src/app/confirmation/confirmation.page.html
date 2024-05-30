@@ -1,0 +1,47 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start" class="menu" [routerLink]="['/annonceform']">
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-buttons>
+    <div class="en-Tete">
+      <p>Etape 2 </p>
+    </div>
+    <ion-buttons slot="end" class="menu">
+      <ion-icon name="search"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <p class="titre">Paiement</p>
+  
+  Offre : basique
+  
+  Duree :
+  <p><input type="text" class="form-control" [(ngModel)]="promo" placeholder="Code promo"></p>
+  <p><button class="btn btn-primary" (click)="onSubmit()">Valider</button></p>
+  <p>Veuillez envoyer 10 000 Ar au numero <strong>038 73 243 36</strong> au nom de <strong>Haingo</strong>. </p>
+  <p>Ajouter comme reference de transaction : <strong>{{reference}}</strong></p>
+  <input type="text" class="form-control" placeholder="Numéro de téléphone de l'émetteur">
+  <div *ngIf="downloadUrl">
+    <ion-item *ngFor="let url of downloadUrl">
+      <img [src]="url" alt="Image">
+    </ion-item>
+  </div>
+</ion-content>
+
+
+
+
+
+
+
+
+<!-- <ion-content>
+  <form (ngSubmit)="uploadFile()">
+    <input type="file" (change)="onFileSelected($event)" multiple>
+    <button type="submit" [disabled]="!selectedFile">Upload</button>
+  </form>
+  <div *ngIf="downloadUrl">
+    <img [src]="downloadUrl" alt="Uploaded Image" />
+  </div> -->

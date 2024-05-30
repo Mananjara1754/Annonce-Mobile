@@ -1,0 +1,137 @@
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar style="border:none;">
+      <ion-title style="color: #1E2059;">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-card *ngIf="utilisateurExisteDansLocalStorage()">
+      <ion-card-content *ngIf="utilisateurEstAdmin()">
+        <p>Admin connecté.</p>
+        <ion-button expand="full" (click)="deconnecter()">Se déconnecter</ion-button>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-button (click)="add()">...</ion-button>
+  
+    <ion-button  [routerLink]="['/login']" *ngIf="!utilisateurEstAdmin()">Se connecter</ion-button>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start" class="menu">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <div class="en-Tete">
+        <img src="../../assets/img/logo.png" alt="">
+      </div>
+      <ion-buttons slot="end" class="menu" [routerLink]="['/recherche']">
+        <ion-icon name="search"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="titre" *ngIf="utilisateurEstAdmin()">
+    <p id="m-titre">Connecte en tant qu'admin</p>
+    <p id="s-titre">Gerer les annonces , modifie .....</p>
+  </div>
+  <div class="choix" *ngIf="utilisateurEstAdmin()" style="color: black;margin-top: 200px;">
+    <ul>
+      <li><a [routerLink]="['/attente']">Pubs en attente</a></li>
+      <li><a [routerLink]="['/actif']">Pubs actifs</a></li>
+      <li><a href="">Termine</a></li>
+      <li><a href="">Pubs rejete</a></li>
+    </ul>
+  </div>
+  <div class="titre" *ngIf="!utilisateurEstAdmin()">
+    <p id="m-titre">Annonces rapides, opportunités illimités</p>
+    <p id="s-titre">Trouvez rapidement ce que vous cherchez sur Paru Vendu Express : Les meilleures annonces à portée de clic</p>
+  </div>
+  <div style="margin-top: 200px;"*ngIf="!utilisateurEstAdmin()">
+    <div class="scrollmenu">
+      <ng-container *ngFor="let categorieArray of categorie" >
+        <span class="badge rounded-pill bg-primary">{{categorieArray.data.nomCategorie}}</span>
+      </ng-container>
+    </div>
+    <br>
+    <p style="color: black;font-size: larger;font-weight: 600;">Annonces sponsorisées</p>
+    <div class="sponsor">
+        <ng-container *ngFor="let annonceSponsor of annonce">
+          <div class="annonce">
+            <!-- ... -->
+            <div class="card-img" style="background-image: url({{annonceSponsor.data.image[0]}});">
+              <div class="card-categ">{{ 
+                annonceSponsor.data.categorie === "1" ? 'Auto moto' : 
+                (annonceSponsor.data.categorie === "2" ? 'Immobilier' : 
+                (annonceSponsor.data.categorie === "3" ? 'High Tech' :
+                (annonceSponsor.data.categorie === "4" ? 'Electroménager' :
+                (annonceSponsor.data.categorie === "5" ? 'Plein air et sports' :
+                (annonceSponsor.data.categorie === "6" ? 'Mobilier' :
+                (annonceSponsor.data.categorie === "7" ? 'Divers' : ''))))))
+              }}</div>
+            </div>
+            <div class="card-info">
+              <p id="card-titre">{{annonceSponsor.data.annonceTitre}}</p>
+              <p>Publier le 21-2-2</p>
+            </div>
+            <div class="row" id="card-footer">
+              <div class="col-6">
+                <p>{{annonceSponsor.data.prix}}AR</p>
+              </div>
+              <div class="col-6">
+                <a [routerLink]="['/detail', annonceSponsor.key]">Voir l'annonce</a>
+              </div>
+            </div>
+            <!-- ... -->
+          </div>
+        </ng-container>
+    </div>
+    <br>
+    <div class="demande">
+      <div class="image">
+
+      </div><br>
+      <div class="text">
+        <p style="font-size: larger;font-weight: 600;">Boostez vos ventes avec Paru Vendu Express : Publiez votre annonce et atteignez de nouveaux horizons</p>
+        <p >Notre plateforme conviviale vous offre une visibilité maximale auprès d'une audience qualifiée. Créez et diffusez votre annonce en quelques clics seulement. Rejoignez-nous dès maintenant et laissez vos annonces briller !</p>
+        <ion-button [routerLink]="['/choix']">Déposer une annonce</ion-button>
+
+      </div>
+      
+    </div>
+    
+  
+    <!-- <div *ngIf="!utilisateurEstAdmin()">
+      <div *ngFor="let annonceValide of annoncesValides" style="background-color: #fff;color:black;">
+        <hr>
+          <p>Nom : {{ annonceValide.data.nom }} Prix : {{ annonceValide.data.prix }}</p>
+          <p>Description : {{ annonceValide.data.description }}</p>
+        <hr>
+      </div>
+    </div>
+    <div *ngIf="utilisateurEstAdmin()">
+      <h3>Liste des demandes d'annonces</h3>
+      <div *ngFor="let annonce of annonces" style="background-color: #fff;color:black;">
+        <hr>
+          <p>Nom : {{ annonce.data.nom }} Prix : {{ annonce.data.prix }}</p>
+          <p>Description : {{ annonce.data.description }}</p>
+          <ion-button (click)="validerAnnonce(annonce.key)">Confirmer</ion-button>
+        <hr>
+      </div>
+    </div>   -->
+    <div class="footer">
+      Paru Vendu Express - 2023 - Tous droits réservés
+    </div>
+  </div>
+  
+ 
+  </ion-content>
+
+</div>
+
+
+
+

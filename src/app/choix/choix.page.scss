@@ -1,0 +1,101 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+ion-toolbar{
+    --background: none;
+    background-color: #fff;
+    border: none;
+}
+.en-Tete{
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+}
+.en-Tete img{
+    width: 160px;
+}
+.menu{
+    width: 10%;
+    justify-content: center;
+    color: #1E2059;
+    // margin-left: 4%;
+}
+.menu ion-icon{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-menu-button{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-content{
+    --background:none;
+    background-color: #fff;
+    // position: relative;
+}
+
+.titre{
+    color: black;
+    text-align: center;
+    padding: 10px 0px;
+    
+}
+.m-titre{
+    font-weight: bold;
+    font-size: 20px;
+}
+.s-titre{
+    font-weight: smaller;
+
+}
+.choix{
+    // border: outset;
+    height: 600px;
+    border-radius:25px;
+    color: black;
+    box-shadow:  5px 5px 10px #d0d0d0,
+             -5px -5px 10px #f0f0f0;
+}
+#choixSpec{
+    height: auto;
+    box-shadow:  5px 5px 10px #FEF218,
+    -5px -5px 10px #fff762;
+}
+
+.pricing{
+    height: 215px;
+    border-radius:25px 25px 0 0;
+
+    // text-align: center;
+    padding: 22px 17px;
+    margin-top: 14px;
+    // background-color: rgb(219, 211, 211);
+}
+.indication{
+    font-size: small;
+    opacity: 0.8;
+}
+.type{
+    font-size: larger;
+    font-weight: 600;
+}
+.prix{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.info{
+    padding: 13px;
+}
+.info ion-icon{
+    font-size: x-large;
+   color: #FEF218;
+}
+.note{
+    position: absolute;
+    margin-left: 10px;
+}
+.identite{
+    float: right;
+    font-size: xx-large;
+    color: #FEF218;
+}

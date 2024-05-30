@@ -1,0 +1,74 @@
+
+ion-toolbar{
+    --background: none;
+    background-color: #fff;
+    border: none;
+}
+.en-Tete{
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+}
+.en-Tete img{
+    width: 160px;
+}
+.menu{
+    width: 10%;
+    justify-content: center;
+    color: #1E2059;
+    // margin-left: 4%;
+}
+.menu ion-icon{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-menu-button{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-content{
+    --background:none;
+    background-color: #fff;
+    // position: relative;
+}
+.card-img{
+    width: 100%;
+    height: 300px;
+    border-radius: 25px;
+    background-image: url(../../assets/img/test.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    // padding: 20px;    
+}
+.element{
+    width: 100%;
+    height: 200px;
+    border-radius: 25px;
+    background-image: url(../../assets/img/test.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+      
+p{
+    color: black;
+}
+.item{
+    margin-top: 12px;
+    width: 32%;
+    height: 150px;
+    border:outset;
+    border-radius: 25px;
+    background-image: url(../../assets/img/test.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

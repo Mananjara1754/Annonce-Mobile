@@ -1,0 +1,45 @@
+
+ion-header ion-toolbar{
+    --background: none;
+    background-color: #fff;
+    border: none;
+}
+.en-Tete{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #fff;
+}
+.en-Tete p{
+    color: #1E2059;
+    font-weight: bolder;
+    font-size: larger;
+    margin-top: 15px;
+}
+.menu{
+    width: 10%;
+    justify-content: center;
+    color: #1E2059;
+    // margin-left: 4%;
+}
+.menu ion-icon{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-menu-button{
+    font-size: xx-large;
+    color: #1E2059;
+}
+ion-content{
+    --background:none;
+    background-color: #fff;
+    // position: relative;
+}
+ion-content .titre{
+    color: black;
+    font-size: large;
+    font-weight: 600;
+}
+p{
+    color: black;
+}

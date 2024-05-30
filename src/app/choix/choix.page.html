@@ -1,0 +1,88 @@
+<!-- 
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar style="border:none;">
+      <ion-title style="color: #1E2059;">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    
+  </ion-content>
+</ion-menu> -->
+  <ion-header >
+    <ion-toolbar>
+      <ion-buttons slot="start" class="menu" [routerLink]="['/accueil']">
+        <ion-icon name="chevron-back"></ion-icon>
+      </ion-buttons>
+      <div class="en-Tete">
+        <img src="../../assets/img/logo.png" alt="">
+      </div>
+      <ion-buttons slot="end" class="menu">
+        <ion-icon name="search"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="titre">
+    <p class="m-titre">Découvrez nos tarifs compétitifs pour promouvoir votre annonce</p>
+    <p class="s-titre">Des tarifs compétitifs pour maximiser la visibilité de votre annonce. Choisissez parmi nos options abordables et atteignez un large public d'acheteurs potentiels. Boostez vos chances de vendre rapidement avec Paru Vendu Express. Découvrez nos tarifs dès maintenant !</p>
+  </div>
+<div class="choix">
+  <div class="pricing">
+    <p class="type">Gratuit</p> 
+    <ion-text class="indication">Pour les budgets limités</ion-text>
+    <p class="prix">0 Ar</p>
+    <button (click)="navigateToSecondPage(0)" class="w-100 btn btn-primary" style="background-color: #1E2059;border: none;">Commencer</button>
+  </div>
+  <div class="info">
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Une photo</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Visible sur le site pendant <a style="font-weight: 600;">2 jours</a> </ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Publication sur notre page facebook</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Page dédié à l'article simplifiée</ion-text></p>
+  </div>
+ 
+</div><br>
+
+<div class="choix">
+  <div class="pricing">
+    <span class="badge rounded-pill" style="float: right;background-color: #1E2059;">Populaire</span>
+    <p class="type">Basique</p> 
+    <ion-text class="indication">Pour les budgets limités</ion-text>
+    <p class="prix">10 000 Ar</p>
+    <button (click)="navigateToSecondPage(50)" class="w-100 btn btn-primary" style="background-color: #1E2059;border: none;">Commencer</button>
+  </div>
+  <div class="info">
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">4 photos</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Visible sur le site pendant <a style="font-weight: 600;">5 jours</a> </ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Priorité sur les résultats de recherche</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Page dédié à l'article avancée</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Publié sur notre page facebook</ion-text></p>  
+  </div>
+
+</div><br>
+<div class="choix" id="choixSpec" style="background-color: #1E2059;color: #fff;">
+  <div class="pricing">
+    <ion-icon class="identite" name="diamond-outline"></ion-icon>
+    <p class="type" style="color: #FEF218;">Premium</p> 
+    <ion-text class="indication">Pour les budgets limités</ion-text>
+    <p class="prix">20 000 Ar</p>
+    <button (click)="navigateToSecondPage(100)" class="w-100 btn btn-primary" style="background-color: #FEF218;border: none;color: #1E2059;">Commencer</button>
+  </div>
+  <div class="info">
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">4 photos</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Visible sur le site pendant <a style="font-weight: 600;">5 jours</a> </ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Priorité maximale sur les résultats de recherche</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Page dédié à l'article avancée</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Visible sur la page d'accueil du site web</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Visible en haut et en bas de la page de recherche</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Visible sur les pages produits</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Publié sur notre page facebook</ion-text></p>
+    <p><ion-icon name="checkmark-circle"></ion-icon> <ion-text class="note">Annonce sponsorisée pour une journée sur notre page facebook</ion-text></p><br>
+  
+  </div>
+ 
+</div><br>
+
+
+</ion-content>
